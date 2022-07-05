@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-bwn$1#sip*32&^6y^7aqi$x1)86zt(37b+$9la5hl=dgejv7xi
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["tiktokdownloader15.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
