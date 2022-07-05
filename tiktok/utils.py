@@ -51,9 +51,10 @@ def getVideoDownloadLink(videoLink):
     chrome_options.add_argument("--headless") # it will open the browser in background
     chrome_options.add_argument("--disable-dev-shm-usage")
     chrome_options.add_argument("--no-sandbox")
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 
     # driver = webdriver.Chrome(ChromeDriverManager().install())
-    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
 
     # sending the request to the server
     driver.get(URL)
