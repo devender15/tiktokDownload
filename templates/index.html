@@ -1,0 +1,82 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>TikTok video downloader</title>
+  </head>
+  <body>
+    <section id="home">
+      <div class="primary-heading-container">
+        <h1 class="primary-heading">
+          Download TikTok videos 
+        </h1>
+        <h2 class="secondary-heading">Without Watermark</h2>
+        <p>{{success}}</p>
+      </div>
+
+      <div class="input-container">
+        <form method="post" action="/tiktok/download"> {% csrf_token %}
+          <div class="input-field">
+            <input
+              type="url"
+              id="url"
+              name="url"
+              placeholder="Paste your TikTok link here"
+            />
+          </div>
+
+          <div class="download">
+            <input class="download-btn" type="submit" value="Download"
+              />
+          </div>
+        </form>
+      </div>
+
+    </section>
+
+    
+    <div class="spinner">
+        <img src="https://i.gifer.com/WMDx.gif" alt="downloading-spinner">
+        <p>Your video will be downloaded under 1 minute...</p>
+    </div>
+
+
+  </body>
+
+  <script>
+
+    let downloadBtn = document.querySelector(".download-btn");
+    let spinner = document.querySelector(".spinner");
+    let inputField = document.querySelector("#url");
+    
+    // initializing the download button disable attribute
+    downloadBtn.disabled = true
+
+    inputField.addEventListener("change", () => {
+        if(inputField.value != "") {
+            downloadBtn.disabled = false;
+        }
+    })
+
+    downloadBtn.addEventListener("click", () => {
+
+        if(inputField.value.length != 0) {
+            spinner.style.display = "block";      
+            spinner.style.visibility = "visible";
+        }
+
+    })
+
+    setTimeout(() => {
+        document.location.reload();
+    }, 30000)
+
+  </script>
+
+
+</html>

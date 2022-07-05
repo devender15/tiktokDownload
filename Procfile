@@ -1,0 +1,1 @@
+web: gunicorn tiktokDownloader.wsgi --log-file -
